@@ -18,6 +18,13 @@ $color-3: #000000;
 
 body{
   font-family: $font-1;
+  padding: 45px 0 0 0;
+  margin: 0 auto;
+}
+
+.header,
+.galleryContainer{
+  margin: 0 50px;
 }
 
 li {
