@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Slideshow from "./Slideshow";
 
-const Card = ({ project }) => {
+const Card = ({ project, onClick }) => {
   const [titleLength, setTitleLength] = useState(false);
 
   useEffect(() => {
@@ -13,11 +12,11 @@ const Card = ({ project }) => {
   }, [project.title]);
 
   return (
-    <li className="propertyContainer">
+    <li className="propertyContainer" onClick={onClick}>
       <img src={project.cover} alt={project.title} />
       <div
         className="propertyInfo"
-        style={{ maxWidth: titleLength ? "60%" : "none" }}
+        style={{ maxWidth: titleLength ? "70%" : "none" }}
       >
         <p>{project.title}</p>
       </div>
