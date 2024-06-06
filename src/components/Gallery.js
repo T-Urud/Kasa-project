@@ -19,9 +19,9 @@ const Gallery = () => {
   return (
     <div className="galleryContainer">
       <ul className="gallery">
-        {projectsData.map((project, index) => (
+        {projectsData.map((project) => (
           <Card
-            key={index}
+            key={project.id}
             project={project}
             onClick={() => handleCardClick(project.id)}
           />

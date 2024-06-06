@@ -1,0 +1,67 @@
+main{
+  margin: 0 50px;
+
+  .InfosContainer,
+  .tagsAndRatingContainer,
+  .alwaysShow{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+    .hostContainer{
+      display: flex;
+      align-items: center;
+
+      .hostPic{
+        width: 64px;
+        height: 64px;
+        overflow: hidden;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        img{
+          object-fit: cover;
+          width: 100%;
+          height: auto;  
+        }
+      }
+    }
+  }
+
+
+  .dropdownsContainer{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    gap: 10%;
+
+    .dropdown{
+      background: $color-1;
+      border-radius: 10px;
+      padding: 10px 20px 10px 10px; 
+      display: grid;
+      grid-template-rows: 0fr;
+
+      .alwaysShow{
+        color: $color-2;
+        font-weight: 700;
+
+        .sign{
+          cursor: pointer;
+          transform: rotate(90deg);
+        }
+      }
+
+      .content{
+        overflow: hidden;
+
+        .equipmentList li{
+          display: block;
+        }
+      }
+    }
+
+  }
+}
