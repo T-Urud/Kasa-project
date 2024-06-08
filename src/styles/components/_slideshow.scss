@@ -1,17 +1,29 @@
 main{
   margin: 0 50px;
 
-  .InfosContainer,
+  .infosContainer,
   .tagsAndRatingContainer,
   .alwaysShow{
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+    h2,
+    .hostContainer p{
+      color: $color-1;
+    }
+
+    .property{
+      font-weight: 500;
+    }
 
 
     .hostContainer{
       display: flex;
       align-items: center;
+      font-weight: 500;
+      gap: 15px;
 
       .hostPic{
         width: 64px;
@@ -29,6 +41,9 @@ main{
         }
       }
     }
+
+  .tagsAndRatingContainer{
+    margin: 15px 0;
   }
 
 
@@ -38,15 +53,16 @@ main{
     gap: 10%;
 
     .dropdown{
-      background: $color-1;
-      border-radius: 10px;
-      padding: 10px 20px 10px 10px; 
       display: grid;
       grid-template-rows: 0fr;
-
+      
       .alwaysShow{
+        background: $color-1;
+        border-radius: 10px 10px 0 0;
         color: $color-2;
         font-weight: 700;
+        padding: 10px 20px 10px 10px; 
+
 
         .sign{
           cursor: pointer;
@@ -55,7 +71,10 @@ main{
       }
 
       .content{
-        overflow: hidden;
+        display: none;
+        padding: 10px;
+        background: #FAFAFA;
+        border-radius: 0 0 10px;
 
         .equipmentList li{
           display: block;

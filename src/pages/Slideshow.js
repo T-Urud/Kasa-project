@@ -26,7 +26,7 @@ const Slideshow = () => {
       {project ? (
         <main>
           <Carousel project={project} />
-          <div className="InfosContainer">
+          <div className="infosContainer">
             <div className="property">
               <h2>{project.title}</h2>
               <p>{project.location}</p>
@@ -59,11 +59,14 @@ const Slideshow = () => {
               </div>
               <div className="content">
                 <ul className="equipmentList">
+                  {/* {projectsData.map((project) => (
+                  ))} */}
                   <li>{project.equipments}</li>
                 </ul>
               </div>
             </div>
           </div>
+          <Footer />
         </main>
       ) : (
         <Error />

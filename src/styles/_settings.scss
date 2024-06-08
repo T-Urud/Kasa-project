@@ -25,6 +25,10 @@ body{
 .header,
 .galleryContainer{
   margin: 0 50px;
+
+  @media screen and (max-width: 425px) {
+    margin: 0 25px;
+  }
 }
 
 li {

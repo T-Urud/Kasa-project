@@ -4,7 +4,9 @@ import Navigation from "./Navigation";
 const Header = () => {
   return (
     <header className="header">
-      <img src="LOGO.jpg" alt="Kasa logo" className="logoContainer"></img>
+      <div className="logoContainer">
+        <img src="LOGO.jpg" alt="Kasa logo"></img>
+      </div>
       <Navigation />
     </header>
   );
