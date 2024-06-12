@@ -3,10 +3,23 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(null);
+  const [sectionVisible, setSectionVisible] = useState({
+    fiabilite: false,
+    respect: false,
+    service: false,
+    securite: false,
+  });
+  const [isClicked, setIsClicked] = useState(false);
 
-  const toggleVisibility = (section) => {
-    setIsVisible(isVisible === section ? null : section);
+  const handleVisibility = (section) => {
+    // prevState --> état avant update
+    setSectionVisible((prevState) => ({
+      // ...prevState --> destructuring object
+      ...prevState,
+      [section]: !prevState[section],
+    }));
+
+    setIsClicked((prevIsClicked) => !prevIsClicked);
   };
 
   return (
@@ -17,14 +30,19 @@ const About = () => {
         <div className="aboutContainer">
           <div className="alwaysShow">
             <p>Fiabilité</p>
-            <button onClick={() => toggleVisibility("fiabilite")}>
+            <button
+              onClick={() => handleVisibility("fiabilite")}
+              style={{
+                transform: isClicked ? "rotate(270deg)" : "rotate(90deg)",
+              }}
+            >
               &#10096;
             </button>
           </div>
           <div
             className="content"
             style={{
-              display: isVisible === "fiabilite" ? "block" : "none",
+              display: sectionVisible.fiabilite ? "block" : "none",
             }}
           >
             <p>
@@ -37,56 +55,74 @@ const About = () => {
         <div className="aboutContainer">
           <div className="alwaysShow">
             <p>Respect</p>
-            <button onClick={() => toggleVisibility("respect")}>
+            <button
+              onClick={() => handleVisibility("fiabilite")}
+              style={{
+                transform: isClicked ? "rotate(270deg)" : "rotate(90deg)",
+              }}
+            >
               &#10096;
             </button>
           </div>
           <div
             className="content"
-            style={{ display: isVisible === "respect" ? "block" : "none" }}
+            style={{ display: sectionVisible.respect ? "block" : "none" }}
           >
             <p>
-              Les annonces postées sur Kasa garantissent une fiabilité totale.
-              Les photos sont conformes aux logements, et toutes les
-              informations sont régulièrement vérifiées par nos équipes.
+              La bienveillance fait partie des valeurs fondatrices de Kasa. Tout
+              comportement discriminatoire ou de pertubation du voisinage
+              entrainera une exclusion de notre plateforme.
             </p>
           </div>
         </div>
         <div className="aboutContainer">
           <div className="alwaysShow">
             <p>Service</p>
-            <button onClick={() => toggleVisibility("service")}>
+            <button
+              onClick={() => handleVisibility("fiabilite")}
+              style={{
+                transform: isClicked ? "rotate(270deg)" : "rotate(90deg)",
+              }}
+            >
               &#10096;
             </button>
           </div>
           <div
             className="content"
-            style={{ display: isVisible === "service" ? "block" : "none" }}
+            style={{ display: sectionVisible.service ? "block" : "none" }}
           >
             <p>
-              Les annonces postées sur Kasa garantissent une fiabilité totale.
-              Les photos sont conformes aux logements, et toutes les
-              informations sont régulièrement vérifiées par nos équipes.
+              La bienveillance fait partie des valeurs fondatrices de Kasa. Tout
+              comportement discriminatoire ou de pertubation du voisinage
+              entrainera une exclusion de notre plateforme.
             </p>
           </div>
         </div>
         <div className="aboutContainer">
           <div className="alwaysShow">
             <p>Sécurité</p>
-            <button onClick={() => toggleVisibility("securite")}>
+            <button
+              onClick={() => handleVisibility("fiabilite")}
+              style={{
+                transform: isClicked ? "rotate(270deg)" : "rotate(90deg)",
+              }}
+            >
               &#10096;
             </button>
           </div>
           <div
             className="content"
             style={{
-              display: isVisible === "securite" ? "block" : "none",
+              display: sectionVisible.securite ? "block" : "none",
             }}
           >
             <p>
-              Les annonces postées sur Kasa garantissent une fiabilité totale.
-              Les photos sont conformes aux logements, et toutes les
-              informations sont régulièrement vérifiées par nos équipes.
+              La sécurité est la priorité de Kasa. Aussi bien pour nos hôtes que
+              pour les voyageurs, chaque logement correspond aux critères de
+              sécurité établis par nos services. En laissant une note aussi bien
+              à l'hôte qu'au locataire, cela permet à nos équipes de vérifier
+              que les standards sont bien respectés. Nous organisons également
+              des ateliers sur la sécurité domestique pour nos hôtes.
             </p>
           </div>
         </div>
