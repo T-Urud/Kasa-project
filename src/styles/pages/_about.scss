@@ -19,11 +19,16 @@
     
     button{
       cursor: pointer;
+      transform: rotate(90deg);
       background: none;
       border: none;
       font-size: 2rem;
       color: $color-2;
-    }
+
+      }
+      .clicked{
+        transform: rotate(270deg);
+      }
   }
 
   .content{

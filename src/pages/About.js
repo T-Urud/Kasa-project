@@ -18,8 +18,6 @@ const About = () => {
       ...prevState,
       [section]: !prevState[section],
     }));
-
-    setIsClicked((prevIsClicked) => !prevIsClicked);
   };
 
   return (
@@ -31,10 +29,14 @@ const About = () => {
           <div className="alwaysShow">
             <p>Fiabilité</p>
             <button
-              onClick={() => handleVisibility("fiabilite")}
-              style={{
-                transform: isClicked ? "rotate(270deg)" : "rotate(90deg)",
+              onClick={() => {
+                handleVisibility("fiabilite");
+                setIsClicked(true);
               }}
+              // style={{
+              //   transform: isClicked ? "rotate(270deg)" : "rotate(90deg)",
+              // }}
+              className={isClicked ? "clicked" : ""}
             >
               &#10096;
             </button>
