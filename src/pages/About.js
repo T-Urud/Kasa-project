@@ -9,12 +9,23 @@ const About = () => {
     service: false,
     securite: false,
   });
-  const [isClicked, setIsClicked] = useState(false);
 
-  const handleVisibility = (section) => {
+  const [isClicked, setIsClicked] = useState({
+    fiabilite: false,
+    respect: false,
+    service: false,
+    securite: false,
+  });
+
+  const handleVisibilityAndToggle = (section) => {
     // prevState --> état avant update
     setSectionVisible((prevState) => ({
       // ...prevState --> destructuring object
+      ...prevState,
+      [section]: !prevState[section],
+    }));
+
+    setIsClicked((prevState) => ({
       ...prevState,
       [section]: !prevState[section],
     }));
@@ -29,14 +40,8 @@ const About = () => {
           <div className="alwaysShow">
             <p>Fiabilité</p>
             <button
-              onClick={() => {
-                handleVisibility("fiabilite");
-                setIsClicked(true);
-              }}
-              // style={{
-              //   transform: isClicked ? "rotate(270deg)" : "rotate(90deg)",
-              // }}
-              className={isClicked ? "clicked" : ""}
+              onClick={() => handleVisibilityAndToggle("fiabilite")}
+              className={isClicked.fiabilite ? "clicked" : ""}
             >
               &#10096;
             </button>
@@ -58,10 +63,8 @@ const About = () => {
           <div className="alwaysShow">
             <p>Respect</p>
             <button
-              onClick={() => handleVisibility("fiabilite")}
-              style={{
-                transform: isClicked ? "rotate(270deg)" : "rotate(90deg)",
-              }}
+              onClick={() => handleVisibilityAndToggle("respect")}
+              className={isClicked.respect ? "clicked" : ""}
             >
               &#10096;
             </button>
@@ -81,10 +84,8 @@ const About = () => {
           <div className="alwaysShow">
             <p>Service</p>
             <button
-              onClick={() => handleVisibility("fiabilite")}
-              style={{
-                transform: isClicked ? "rotate(270deg)" : "rotate(90deg)",
-              }}
+              onClick={() => handleVisibilityAndToggle("service")}
+              className={isClicked.service ? "clicked" : ""}
             >
               &#10096;
             </button>
@@ -104,10 +105,8 @@ const About = () => {
           <div className="alwaysShow">
             <p>Sécurité</p>
             <button
-              onClick={() => handleVisibility("fiabilite")}
-              style={{
-                transform: isClicked ? "rotate(270deg)" : "rotate(90deg)",
-              }}
+              onClick={() => handleVisibilityAndToggle("securite")}
+              className={isClicked.securite ? "clicked" : ""}
             >
               &#10096;
             </button>
