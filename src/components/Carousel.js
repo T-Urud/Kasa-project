@@ -1,23 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Carousel = ({ project }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) =>
+      prev === project.pictures.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const previousSlide = () => {
+    setCurrentSlide((prev) =>
+      prev === 0 ? project.pictures.length - 1 : prev - 1
+    );
+  };
+
   return (
     <div className="carousel">
-      <button className="btn prev">&#10096;</button>
-      <button className="btn next">&#10097;</button>
+      <button className="prev" onClick={previousSlide}>
+        &#10096;
+      </button>
+      <button className="next" onClick={nextSlide}>
+        &#10097;
+      </button>
       <ul>
-        <li className="slide">
-          <img src="" alt="img1" />
-        </li>
-        <li className="slide active">
-          <img src={project.cover} alt="img2" />
-        </li>
-        <li className="slide">
-          <img src="" alt="img3" />
-        </li>
-        <li className="slide">
-          <img src="" alt="img4" />
-        </li>
+        {project.pictures.map((slide, index) => (
+          <li
+            key={index}
+            className={`slide ${index === currentSlide ? "active" : ""}`}
+          >
+            <img src={project.pictures[currentSlide]} alt={project.title} />
+          </li>
+        ))}
       </ul>
     </div>
   );

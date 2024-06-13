@@ -2,6 +2,24 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+export const handleVisibilityAndToggle = (
+  section,
+  setSectionVisible,
+  setIsClicked
+) => {
+  // prevState --> état avant update
+  setSectionVisible((prevState) => ({
+    // ...prevState --> destructuring object
+    ...prevState,
+    [section]: !prevState[section],
+  }));
+
+  setIsClicked((prevState) => ({
+    ...prevState,
+    [section]: !prevState[section],
+  }));
+};
+
 const About = () => {
   const [sectionVisible, setSectionVisible] = useState({
     fiabilite: false,
@@ -17,20 +35,6 @@ const About = () => {
     securite: false,
   });
 
-  const handleVisibilityAndToggle = (section) => {
-    // prevState --> état avant update
-    setSectionVisible((prevState) => ({
-      // ...prevState --> destructuring object
-      ...prevState,
-      [section]: !prevState[section],
-    }));
-
-    setIsClicked((prevState) => ({
-      ...prevState,
-      [section]: !prevState[section],
-    }));
-  };
-
   return (
     <div>
       <Header />
@@ -40,7 +44,13 @@ const About = () => {
           <div className="alwaysShow">
             <p>Fiabilité</p>
             <button
-              onClick={() => handleVisibilityAndToggle("fiabilite")}
+              onClick={() =>
+                handleVisibilityAndToggle(
+                  "fiabilite",
+                  setSectionVisible,
+                  setIsClicked
+                )
+              }
               className={isClicked.fiabilite ? "clicked" : ""}
             >
               &#10096;
@@ -63,7 +73,13 @@ const About = () => {
           <div className="alwaysShow">
             <p>Respect</p>
             <button
-              onClick={() => handleVisibilityAndToggle("respect")}
+              onClick={() =>
+                handleVisibilityAndToggle(
+                  "respect",
+                  setSectionVisible,
+                  setIsClicked
+                )
+              }
               className={isClicked.respect ? "clicked" : ""}
             >
               &#10096;
@@ -84,7 +100,13 @@ const About = () => {
           <div className="alwaysShow">
             <p>Service</p>
             <button
-              onClick={() => handleVisibilityAndToggle("service")}
+              onClick={() =>
+                handleVisibilityAndToggle(
+                  "service",
+                  setSectionVisible,
+                  setIsClicked
+                )
+              }
               className={isClicked.service ? "clicked" : ""}
             >
               &#10096;
@@ -105,7 +127,13 @@ const About = () => {
           <div className="alwaysShow">
             <p>Sécurité</p>
             <button
-              onClick={() => handleVisibilityAndToggle("securite")}
+              onClick={() =>
+                handleVisibilityAndToggle(
+                  "securite",
+                  setSectionVisible,
+                  setIsClicked
+                )
+              }
               className={isClicked.securite ? "clicked" : ""}
             >
               &#10096;

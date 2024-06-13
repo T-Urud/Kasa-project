@@ -44,6 +44,34 @@ main{
 
   .tagsAndRatingContainer{
     margin: 15px 0;
+
+    .tagsContainer ul{
+      display: flex;
+      gap: 1rem;
+
+      li{
+        height: 25px;
+        min-width: 115px;
+        border-radius: 10px;
+        background: $color-1;
+        color: $color-2;
+        font-size: 0.875rem;
+        font-weight: 700;
+        display: grid;
+        place-content: center;
+        padding: 8px;
+      }
+    }
+
+    .ratingContainer{
+      font-size: 1.5rem;
+      color: #E3E3E3;
+
+      span{
+
+        margin: 0 5px;
+      }
+    }
   }
 
 
@@ -64,7 +92,7 @@ main{
         padding: 10px 20px 10px 10px; 
 
 
-        .sign{
+        button{
           cursor: pointer;
           transform: rotate(90deg);
           background: none;
@@ -72,17 +100,16 @@ main{
           font-size: 1.2rem;
           color: $color-2;
         }
+        .clicked{
+          transform: rotate(270deg);
+        }
+       
       }
 
       .content{
-        display: none;
-        padding: 10px;
+        padding: 20px 20px 10px 20px;
         background: #FAFAFA;
         border-radius: 0 0 10px;
-
-        .equipmentList li{
-          display: block;
-        }
       }
     }
 

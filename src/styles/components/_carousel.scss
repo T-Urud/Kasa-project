@@ -5,7 +5,7 @@
   position: relative;
   margin-bottom: 10px;
 
-  .btn{
+  button{
     position: absolute;
     background: none;
     outline: none;
@@ -17,13 +17,12 @@
     transform: translateY(-50%);
     top: 50%;
 
-    .prev{
+    &.prev{
       left: 5px;
     }
-    .next{
+    &.next{
       right: 5px;
     }
-    
   }
   .carousel li{
     list-style: none;
@@ -35,7 +34,7 @@
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: 0.4s ease-in-out;
+  // transition: 0.2s;
 
   img{
     object-fit: cover;
@@ -44,7 +43,7 @@
     border-radius: 25px;
   }
 
-}
-.slide.active{
-  opacity: 1;
+  &.active{
+    opacity: 1;
+  }
 }

@@ -5,12 +5,22 @@ import Carousel from "../components/Carousel";
 import axios from "axios";
 import Error from "./Error";
 import Footer from "../components/Footer";
+import About, { handleVisibilityAndToggle } from "./About";
 
 const Slideshow = () => {
   const { id } = useParams();
   // obtenir ID
 
   const [projectsData, setProjectsData] = useState([]);
+
+  const [sectionVisible, setSectionVisible] = useState({
+    description: false,
+    equipments: false,
+  });
+  const [isClicked, setIsClicked] = useState({
+    description: false,
+    equipments: false,
+  });
 
   useEffect(() => {
     axios.get("/db.json").then((res) => setProjectsData(res.data));
@@ -39,29 +49,75 @@ const Slideshow = () => {
             </div>
           </div>
           <div className="tagsAndRatingContainer">
-            <div className="tagsContainer">{project.tags}</div>
-            <div className="ratingContainer">{project.rating}</div>
+            <div className="tagsContainer">
+              <ul>
+                {project.tags.map((tag, index) => (
+                  <li key={index}>{tag}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="ratingContainer">
+              <ul>
+                <span>&#9733;</span>
+                <span>&#9733;</span>
+                <span>&#9733;</span>
+                <span>&#9733;</span>
+                <span>&#9733;</span>
+              </ul>
+            </div>
           </div>
           <div className="dropdownsContainer">
             <div className="dropdown">
               <div className="alwaysShow">
                 <p>Description</p>
-                <button className="sign">&#10096;</button>
+                <button
+                  className={isClicked.description ? "clicked" : ""}
+                  onClick={() =>
+                    handleVisibilityAndToggle(
+                      "description",
+                      setSectionVisible,
+                      setIsClicked
+                    )
+                  }
+                >
+                  &#10096;
+                </button>
               </div>
-              <div className="content">
+              <div
+                className="content"
+                style={{
+                  display: sectionVisible.description ? "block" : "none",
+                }}
+              >
                 <p>{project.description}</p>
               </div>
             </div>
             <div className="dropdown">
               <div className="alwaysShow">
                 <p>Equipements</p>
-                <button className="sign">&#10096;</button>
+                <button
+                  className={isClicked.equipments ? "clicked" : ""}
+                  onClick={() =>
+                    handleVisibilityAndToggle(
+                      "equipments",
+                      setSectionVisible,
+                      setIsClicked
+                    )
+                  }
+                >
+                  &#10096;
+                </button>
               </div>
-              <div className="content">
+              <div
+                className="content"
+                style={{
+                  display: sectionVisible.equipments ? "block" : "none",
+                }}
+              >
                 <ul className="equipmentList">
-                  {/* {projectsData.map((project) => (
-                  ))} */}
-                  <li>{project.equipments}</li>
+                  {project.equipments.map((equipment, index) => (
+                    <li key={index}>{equipment}</li>
+                  ))}
                 </ul>
               </div>
             </div>
