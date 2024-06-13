@@ -67,6 +67,10 @@ main{
         .sign{
           cursor: pointer;
           transform: rotate(90deg);
+          background: none;
+          border: none;
+          font-size: 1.2rem;
+          color: $color-2;
         }
       }
 

@@ -46,7 +46,7 @@ const Slideshow = () => {
             <div className="dropdown">
               <div className="alwaysShow">
                 <p>Description</p>
-                <p className="sign">&#10096;</p>
+                <button className="sign">&#10096;</button>
               </div>
               <div className="content">
                 <p>{project.description}</p>
@@ -55,7 +55,7 @@ const Slideshow = () => {
             <div className="dropdown">
               <div className="alwaysShow">
                 <p>Equipements</p>
-                <p className="sign">&#10096;</p>
+                <button className="sign">&#10096;</button>
               </div>
               <div className="content">
                 <ul className="equipmentList">
