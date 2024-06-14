@@ -27,6 +27,21 @@
   .carousel li{
     list-style: none;
   }
+
+  .displayNumberPictures{
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: $color-2;
+    right: 50%;
+    transform: translate(-50%, -50%);
+
+    &.hidden{
+      display: none;
+    }
+  }
   
 }
 .slide{
@@ -34,7 +49,6 @@
   height: 100%;
   width: 100%;
   opacity: 0;
-  // transition: 0.2s;
 
   img{
     object-fit: cover;

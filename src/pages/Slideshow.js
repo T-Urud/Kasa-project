@@ -35,9 +35,9 @@ const Slideshow = () => {
 
   return (
     <div>
-      <Header />
       {project ? (
         <main>
+          <Header />
           <Carousel project={project} />
           <div className="infosContainer">
             <div className="property">

@@ -30,6 +30,15 @@ const Carousel = ({ project }) => {
             className={`slide ${index === currentSlide ? "active" : ""}`}
           >
             <img src={project.pictures[currentSlide]} alt={project.title} />
+            <span
+              className={
+                project.pictures.length == 1
+                  ? `displayNumberPictures hidden`
+                  : "displayNumberPictures"
+              }
+            >
+              {currentSlide + 1}/{project.pictures.length}
+            </span>
           </li>
         ))}
       </ul>
