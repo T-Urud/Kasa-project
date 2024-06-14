@@ -68,8 +68,11 @@ main{
       color: #E3E3E3;
 
       span{
-
         margin: 0 5px;
+
+        &.full{
+          color: $color-1;
+        }
       }
     }
   }

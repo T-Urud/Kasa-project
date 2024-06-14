@@ -30,6 +30,9 @@ const Slideshow = () => {
   const project = projectsData.find((project) => project.id === id);
   // find() permet de trouver le projet avec id qui match avec id de l'URL
 
+  const rate = project ? Number(project.rating) : 0;
+  // Number() convertit string en number
+
   return (
     <div>
       <Header />
@@ -58,11 +61,11 @@ const Slideshow = () => {
             </div>
             <div className="ratingContainer">
               <ul>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
-                <span>&#9733;</span>
+                <span className={rate > 0 ? "full" : ""}>&#9733;</span>
+                <span className={rate > 1 ? "full" : ""}>&#9733;</span>
+                <span className={rate > 2 ? "full" : ""}>&#9733;</span>
+                <span className={rate > 3 ? "full" : ""}>&#9733;</span>
+                <span className={rate > 4 ? "full" : ""}>&#9733;</span>
               </ul>
             </div>
           </div>
@@ -124,6 +127,8 @@ const Slideshow = () => {
           </div>
           <Footer />
         </main>
+      ) : projectsData.length === 0 ? (
+        <div></div>
       ) : (
         <Error />
       )}
