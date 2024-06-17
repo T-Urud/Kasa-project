@@ -5,6 +5,10 @@
   position: relative;
   margin-bottom: 10px;
 
+  @media screen and (max-width: 426px) {
+    height: 255px;
+  }
+
   button{
     position: absolute;
     background: none;
@@ -22,6 +26,10 @@
     }
     &.next{
       right: 5px;
+    }
+
+    @media screen and (max-width:426px) {
+      font-size: 3rem;
     }
   }
   .carousel li{

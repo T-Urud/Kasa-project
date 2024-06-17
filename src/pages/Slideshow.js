@@ -37,91 +37,98 @@ const Slideshow = () => {
     <div>
       {project ? (
         <main>
-          <Header />
-          <Carousel project={project} />
-          <div className="infosContainer">
-            <div className="property">
-              <h2>{project.title}</h2>
-              <p>{project.location}</p>
-            </div>
-            <div className="hostContainer">
-              <p>{project.host.name}</p>
-              <div className="hostPic">
-                <img src={project.host.picture} alt="host profile picture" />
+          <div className="marginContainer">
+            <Header />
+            <Carousel project={project} />
+            <div className="infosAndTagsContainer">
+              <div className="infosContainer">
+                <div className="property">
+                  <h2>{project.title}</h2>
+                  <p>{project.location}</p>
+                </div>
+                <div className="tagsContainer">
+                  <ul>
+                    {project.tags.map((tag, index) => (
+                      <li key={index}>{tag}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="tagsAndRatingContainer">
+                <div className="hostContainer">
+                  <p>{project.host.name}</p>
+                  <div className="hostPic">
+                    <img
+                      src={project.host.picture}
+                      alt="host profile picture"
+                    />
+                  </div>
+                  <div className="ratingContainer">
+                    <ul>
+                      <span className={rate > 0 ? "full" : ""}>&#9733;</span>
+                      <span className={rate > 1 ? "full" : ""}>&#9733;</span>
+                      <span className={rate > 2 ? "full" : ""}>&#9733;</span>
+                      <span className={rate > 3 ? "full" : ""}>&#9733;</span>
+                      <span className={rate > 4 ? "full" : ""}>&#9733;</span>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="tagsAndRatingContainer">
-            <div className="tagsContainer">
-              <ul>
-                {project.tags.map((tag, index) => (
-                  <li key={index}>{tag}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="ratingContainer">
-              <ul>
-                <span className={rate > 0 ? "full" : ""}>&#9733;</span>
-                <span className={rate > 1 ? "full" : ""}>&#9733;</span>
-                <span className={rate > 2 ? "full" : ""}>&#9733;</span>
-                <span className={rate > 3 ? "full" : ""}>&#9733;</span>
-                <span className={rate > 4 ? "full" : ""}>&#9733;</span>
-              </ul>
-            </div>
-          </div>
-          <div className="dropdownsContainer">
-            <div className="dropdown">
-              <div className="alwaysShow">
-                <p>Description</p>
-                <button
-                  className={isClicked.description ? "clicked" : ""}
-                  onClick={() =>
-                    handleVisibilityAndToggle(
-                      "description",
-                      setSectionVisible,
-                      setIsClicked
-                    )
-                  }
+            <div className="dropdownsContainer">
+              <div className="dropdown">
+                <div className="alwaysShow">
+                  <p>Description</p>
+                  <button
+                    className={isClicked.description ? "clicked" : ""}
+                    onClick={() =>
+                      handleVisibilityAndToggle(
+                        "description",
+                        setSectionVisible,
+                        setIsClicked
+                      )
+                    }
+                  >
+                    &#10096;
+                  </button>
+                </div>
+                <div
+                  className="content"
+                  style={{
+                    display: sectionVisible.description ? "block" : "none",
+                  }}
                 >
-                  &#10096;
-                </button>
+                  <p>{project.description}</p>
+                </div>
               </div>
-              <div
-                className="content"
-                style={{
-                  display: sectionVisible.description ? "block" : "none",
-                }}
-              >
-                <p>{project.description}</p>
-              </div>
-            </div>
-            <div className="dropdown">
-              <div className="alwaysShow">
-                <p>Equipements</p>
-                <button
-                  className={isClicked.equipments ? "clicked" : ""}
-                  onClick={() =>
-                    handleVisibilityAndToggle(
-                      "equipments",
-                      setSectionVisible,
-                      setIsClicked
-                    )
-                  }
+              <div className="dropdown">
+                <div className="alwaysShow">
+                  <p>Equipements</p>
+                  <button
+                    className={isClicked.equipments ? "clicked" : ""}
+                    onClick={() =>
+                      handleVisibilityAndToggle(
+                        "equipments",
+                        setSectionVisible,
+                        setIsClicked
+                      )
+                    }
+                  >
+                    &#10096;
+                  </button>
+                </div>
+                <div
+                  className="content"
+                  style={{
+                    display: sectionVisible.equipments ? "block" : "none",
+                  }}
                 >
-                  &#10096;
-                </button>
-              </div>
-              <div
-                className="content"
-                style={{
-                  display: sectionVisible.equipments ? "block" : "none",
-                }}
-              >
-                <ul className="equipmentList">
-                  {project.equipments.map((equipment, index) => (
-                    <li key={index}>{equipment}</li>
-                  ))}
-                </ul>
+                  <ul className="equipmentList">
+                    {project.equipments.map((equipment, index) => (
+                      <li key={index}>{equipment}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

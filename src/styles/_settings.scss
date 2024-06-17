@@ -22,11 +22,17 @@ body{
   margin: 0 auto;
 }
 
+@mixin flexSb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .header,
 .galleryContainer{
   margin: 0 50px;
 
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 426px) {
     margin: 0 25px;
   }
 }
