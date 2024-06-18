@@ -5,7 +5,7 @@ import Carousel from "../components/Carousel";
 import axios from "axios";
 import Error from "./Error";
 import Footer from "../components/Footer";
-import About, { handleVisibilityAndToggle } from "./About";
+import { handleVisibilityAndToggle } from "./About";
 
 const Slideshow = () => {
   const { id } = useParams();

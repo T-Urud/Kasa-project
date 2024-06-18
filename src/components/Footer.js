@@ -9,7 +9,7 @@ const Footer = () => {
           ../footer-mobile.svg 600w,
           ../footer-desktop.svg 1200w
         "
-        sizes="(max-width: 600px) 100vw, 50vw"
+        sizes="(max-width: 426px) 100vw, 50vw"
         alt="Kasa footer with logo and general terms and conditions"
       />
     </footer>

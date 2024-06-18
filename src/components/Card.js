@@ -14,13 +14,7 @@ const Card = ({ project, onClick }) => {
   return (
     <li className="propertyContainer" onClick={onClick}>
       <img src={project.cover} alt={project.title} />
-      <div
-        className={titleLength ? `propertyInfo longTitle` : "propertyInfo"}
-        // style={{
-        //   maxWidth: titleLength ? "70%" : "none",
-        //   top: titleLength ? "290px" : "300px",
-        // }}
-      >
+      <div className={titleLength ? `propertyInfo longTitle` : "propertyInfo"}>
         <p>{project.title}</p>
       </div>
     </li>

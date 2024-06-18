@@ -18,13 +18,13 @@ const Carousel = ({ project }) => {
   return (
     <div className="carousel">
       <button
-        className={project.pictures.length == 1 ? `prev hidden` : "prev"}
+        className={project.pictures.length === 1 ? `prev hidden` : "prev"}
         onClick={previousSlide}
       >
         &#10096;
       </button>
       <button
-        className={project.pictures.length == 1 ? `next hidden` : "next"}
+        className={project.pictures.length === 1 ? `next hidden` : "next"}
         onClick={nextSlide}
       >
         &#10097;
@@ -38,7 +38,7 @@ const Carousel = ({ project }) => {
             <img src={project.pictures[currentSlide]} alt={project.title} />
             <span
               className={
-                project.pictures.length == 1
+                project.pictures.length === 1
                   ? `displayNumberPictures hidden`
                   : "displayNumberPictures"
               }
