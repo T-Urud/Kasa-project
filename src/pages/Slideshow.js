@@ -54,7 +54,7 @@ const Slideshow = () => {
                   </ul>
                 </div>
               </div>
-              <div className="tagsAndRatingContainer">
+              <div className="hostAndRatingContainer">
                 <div className="hostContainer">
                   <p>{project.host.name}</p>
                   <div className="hostPic">
@@ -63,15 +63,15 @@ const Slideshow = () => {
                       alt="host profile picture"
                     />
                   </div>
-                  <div className="ratingContainer">
-                    <ul>
-                      <span className={rate > 0 ? "full" : ""}>&#9733;</span>
-                      <span className={rate > 1 ? "full" : ""}>&#9733;</span>
-                      <span className={rate > 2 ? "full" : ""}>&#9733;</span>
-                      <span className={rate > 3 ? "full" : ""}>&#9733;</span>
-                      <span className={rate > 4 ? "full" : ""}>&#9733;</span>
-                    </ul>
-                  </div>
+                </div>
+                <div className="ratingContainer">
+                  <ul>
+                    <span className={rate > 0 ? "full" : ""}>&#9733;</span>
+                    <span className={rate > 1 ? "full" : ""}>&#9733;</span>
+                    <span className={rate > 2 ? "full" : ""}>&#9733;</span>
+                    <span className={rate > 3 ? "full" : ""}>&#9733;</span>
+                    <span className={rate > 4 ? "full" : ""}>&#9733;</span>
+                  </ul>
                 </div>
               </div>
             </div>

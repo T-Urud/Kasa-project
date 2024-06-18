@@ -9,51 +9,33 @@
     margin: 0 0 25px 0;
   }
 
-  .infosContainer,
-  .tagsAndRatingContainer,
-  .alwaysShow{
+  .infosAndTagsContainer{
     @include flexSb();
-  }
+    margin: 15px 0;
 
     h2,
     .hostContainer p{
       color: $color-1;
     }
-
+    
+    .infosContainer,
+    .tagsContainer{
+      width: 100%;
+    }
     .property{
       font-weight: 500;
-    }
+      margin-bottom: 10px;
 
-
-    .hostContainer{
-      display: flex;
-      align-items: center;
-      font-weight: 500;
-      gap: 15px;
-
-      .hostPic{
-        width: 64px;
-        height: 64px;
-        overflow: hidden;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    
-        img{
-          object-fit: cover;
-          width: 100%;
-          height: auto;  
-        }
+      @media screen and (max-width:426px) {
+        font-size: 0.9rem;
       }
     }
 
-  .tagsAndRatingContainer{
-    margin: 15px 0;
 
     .tagsContainer ul{
       display: flex;
       gap: 1rem;
+      width: 100%;
 
       li{
         height: 25px;
@@ -66,23 +48,74 @@
         display: grid;
         place-content: center;
         padding: 8px;
-      }
-    }
 
-    .ratingContainer{
-      font-size: 1.5rem;
-      color: #E3E3E3;
-
-      span{
-        margin: 0 5px;
-
-        &.full{
-          color: $color-1;
+        @media screen and (max-width:426px) {
+          font-size: 0.625rem;
+          min-width: auto;
         }
       }
     }
-  }
 
+
+    .hostAndRatingContainer{
+      .hostContainer{
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        gap: 15px;
+  
+        .hostPic{
+          width: 64px;
+          height: 64px;
+          overflow: hidden;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      
+          img{
+            object-fit: cover;
+            width: 100%;
+            height: auto;  
+          }
+
+          @media screen and (max-width:426px) {
+            width: 32px;
+            height: 32px;
+          }
+        }
+
+        @media screen and (max-width:426px) {
+          font-size: 0.75rem;
+        }
+      }
+      
+      .ratingContainer{
+        font-size: 1.5rem;
+        color: #E3E3E3;
+  
+        span{
+          margin: 0 2.5px;
+  
+          &.full{
+            color: $color-1;
+          }
+        }
+      }
+      
+      @media screen and (max-width:726px) {
+        @include flexSb();
+        flex-direction: row-reverse;
+        width: 100%;
+      }
+    }
+
+    @media screen and (max-width:726px) {
+      flex-direction: column;
+      gap: 1rem;
+
+    }
+  }
 
   .dropdownsContainer{
     display: grid;
@@ -99,6 +132,11 @@
         color: $color-2;
         font-weight: 700;
         padding: 10px 20px 10px 10px; 
+        @include flexSb();
+
+        @media screen and (max-width:426px) {
+          font-size: 0.8rem;
+        }
 
         button{
           cursor: pointer;
@@ -118,6 +156,10 @@
         padding: 20px 20px 10px 20px;
         background: #FAFAFA;
         border-radius: 0 0 10px;
+
+        @media screen and (max-width:426px) {
+          font-size: 0.8rem;
+        }
       }
     }
 

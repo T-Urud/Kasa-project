@@ -33,4 +33,11 @@
     background: #FAFAFA;
     border-radius: 0 0 10px;
   }
+
+  @media screen and (max-width:769px) {
+    margin: 0 50px;
+  }
+  @media screen and (max-width:426px) {
+    margin: 0 25px;
+  }
 }
