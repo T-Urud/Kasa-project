@@ -45,7 +45,7 @@
 
     .propertyInfo{
       position: absolute;
-      top: 290px;
+      top: 300px;
       background: #f6f6f6;
       font-weight: 600;
       color: $color-3;
@@ -53,6 +53,15 @@
       border-radius: 10px;
       font-size: 0.9rem;
       left: 10px;
+
+      
+      @media screen and (max-width:425px) {
+        top: 215px;
+      }  
+    }
+    .longTitle{
+      max-width: 70%;
+      top: 290px;
 
       @media screen and (max-width:425px) {
         top: 200px;
