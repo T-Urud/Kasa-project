@@ -17,10 +17,16 @@ const Carousel = ({ project }) => {
 
   return (
     <div className="carousel">
-      <button className="prev" onClick={previousSlide}>
+      <button
+        className={project.pictures.length == 1 ? `prev hidden` : "prev"}
+        onClick={previousSlide}
+      >
         &#10096;
       </button>
-      <button className="next" onClick={nextSlide}>
+      <button
+        className={project.pictures.length == 1 ? `next hidden` : "next"}
+        onClick={nextSlide}
+      >
         &#10097;
       </button>
       <ul>

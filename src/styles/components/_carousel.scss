@@ -28,6 +28,10 @@
       right: 5px;
     }
 
+    &.hidden{
+      display: none;
+    }
+
     @media screen and (max-width:426px) {
       font-size: 3rem;
     }
