@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Collapse = ({ project, descriptionTitle, equipmentsTitle }) => {
+const Collapse2 = ({ title, content }) => {
   const handleVisibilityAndToggle = (
     section,
     setSectionVisible,
@@ -21,11 +21,9 @@ const Collapse = ({ project, descriptionTitle, equipmentsTitle }) => {
 
   const [sectionVisible, setSectionVisible] = useState({
     description: false,
-    equipments: false,
   });
   const [isClicked, setIsClicked] = useState({
     description: false,
-    equipments: false,
   });
 
   return (
@@ -34,7 +32,7 @@ const Collapse = ({ project, descriptionTitle, equipmentsTitle }) => {
         className={`${sectionVisible.description ? "open" : "close"} dropdown`}
       >
         <div className="alwaysShow">
-          <p>{descriptionTitle}</p>
+          <p>{title}</p>
           <button
             className={isClicked.description ? "clicked" : ""}
             onClick={() =>
@@ -48,38 +46,10 @@ const Collapse = ({ project, descriptionTitle, equipmentsTitle }) => {
             &#10096;
           </button>
         </div>
-        <div className="content">
-          <p>{project.description}</p>
-        </div>
-      </div>
-      <div
-        className={`${sectionVisible.equipments ? "open" : "close"} dropdown`}
-      >
-        <div className="alwaysShow">
-          <p>{equipmentsTitle}</p>
-          <button
-            className={isClicked.equipments ? "clicked" : ""}
-            onClick={() =>
-              handleVisibilityAndToggle(
-                "equipments",
-                setSectionVisible,
-                setIsClicked
-              )
-            }
-          >
-            &#10096;
-          </button>
-        </div>
-        <div className="content">
-          <ul>
-            {project.equipments.map((equipment, index) => (
-              <li key={index}>{equipment}</li>
-            ))}
-          </ul>
-        </div>
+        <div className="content">{<p>{content}</p>}</div>
       </div>
     </div>
   );
 };
 
-export default Collapse;
+export default Collapse2;

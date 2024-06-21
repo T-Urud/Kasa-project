@@ -1,9 +1,5 @@
 .dropdownsContainer{
-
-  display: grid;
-  gap: 10%;
-  grid-template-columns: 45% 45%;
-
+  margin: 20px 0;
   .dropdown{
     display: grid;
     grid-template-rows: 0fr;
@@ -46,7 +42,7 @@
         font-size: 0.8rem;
       }
 
-      p{
+      p, ul{
         overflow: hidden;
       }
     }
@@ -55,6 +51,11 @@
       .content {
         grid-template-rows: 1fr;
         padding: 20px 20px 10px 20px;
+      }
+    }
+    &.close{
+      .content{
+        background: transparent;
       }
     }
     

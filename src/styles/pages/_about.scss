@@ -1,10 +1,5 @@
-.aboutGeneralContainer{
-  margin: 0 100px;
-
-  .aboutContainer{
-    margin: 20px 0;
-  }
-
+.aboutContainer{
+  margin: 20px 50px;
 
   .alwaysShow{
     padding: 10px 20px 10px 15px;
@@ -13,7 +8,7 @@
     color: $color-2;
     font-weight: 700;
     @include flexSb();
-    
+      
     button{
       cursor: pointer;
       transform: rotate(90deg);
@@ -21,23 +16,23 @@
       border: none;
       font-size: 1.5rem;
       color: $color-2;
-      }
-      .clicked{
-        transform: rotate(270deg);
-      }
+    }
+    .clicked{
+      transform: rotate(270deg);
+    }
   }
-
+  
   .content{
     display: none;
     padding: 10px 20px 10px 15px;
     background: #FAFAFA;
     border-radius: 0 0 10px;
-
+  
     @media screen and (max-width:426px) {
       font-size: 0.8rem;
     }
   }
-
+  
   @media screen and (max-width:769px) {
     margin: 0 50px;
   }
@@ -45,3 +40,5 @@
     margin: 0 25px;
   }
 }
+
+
