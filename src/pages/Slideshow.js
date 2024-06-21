@@ -5,22 +5,13 @@ import Carousel from "../components/Carousel";
 import axios from "axios";
 import Error from "./Error";
 import Footer from "../components/Footer";
-import { handleVisibilityAndToggle } from "./About";
+import Collapse from "../components/Collapse";
 
 const Slideshow = () => {
   const { id } = useParams();
   // obtenir ID
 
   const [projectsData, setProjectsData] = useState([]);
-
-  const [sectionVisible, setSectionVisible] = useState({
-    description: false,
-    equipments: false,
-  });
-  const [isClicked, setIsClicked] = useState({
-    description: false,
-    equipments: false,
-  });
 
   useEffect(() => {
     axios.get("/db.json").then((res) => setProjectsData(res.data));
@@ -32,6 +23,8 @@ const Slideshow = () => {
 
   const rate = project ? Number(project.rating) : 0;
   // Number() convertit string en number
+
+  // const title = () => <Collapse description="tst" />;
 
   return (
     <div>
@@ -75,62 +68,7 @@ const Slideshow = () => {
                 </div>
               </div>
             </div>
-            <div className="dropdownsContainer">
-              <div className="dropdown">
-                <div className="alwaysShow">
-                  <p>Description</p>
-                  <button
-                    className={isClicked.description ? "clicked" : ""}
-                    onClick={() =>
-                      handleVisibilityAndToggle(
-                        "description",
-                        setSectionVisible,
-                        setIsClicked
-                      )
-                    }
-                  >
-                    &#10096;
-                  </button>
-                </div>
-                <div
-                  className="content"
-                  style={{
-                    display: sectionVisible.description ? "block" : "none",
-                  }}
-                >
-                  <p>{project.description}</p>
-                </div>
-              </div>
-              <div className="dropdown">
-                <div className="alwaysShow">
-                  <p>Equipements</p>
-                  <button
-                    className={isClicked.equipments ? "clicked" : ""}
-                    onClick={() =>
-                      handleVisibilityAndToggle(
-                        "equipments",
-                        setSectionVisible,
-                        setIsClicked
-                      )
-                    }
-                  >
-                    &#10096;
-                  </button>
-                </div>
-                <div
-                  className="content"
-                  style={{
-                    display: sectionVisible.equipments ? "block" : "none",
-                  }}
-                >
-                  <ul className="equipmentList">
-                    {project.equipments.map((equipment, index) => (
-                      <li key={index}>{equipment}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <Collapse descriptionTitle="Description" />
           </div>
           <Footer />
         </main>

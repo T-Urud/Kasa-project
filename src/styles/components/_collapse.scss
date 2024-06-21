@@ -1,0 +1,66 @@
+.dropdownsContainer{
+
+  display: grid;
+  gap: 10%;
+  grid-template-columns: 45% 45%;
+
+  .dropdown{
+    display: grid;
+    grid-template-rows: 0fr;
+    
+    .alwaysShow{
+      background: $color-1;
+      border-radius: 10px 10px 0 0;
+      color: $color-2;
+      font-weight: 700;
+      padding: 10px 20px 10px 10px; 
+      @include flexSb();
+
+      @media screen and (max-width:426px) {
+        font-size: 0.8rem;
+      }
+
+      button{
+        cursor: pointer;
+        transform: rotate(90deg);
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        color: $color-2;
+      }
+      .clicked{
+        transform: rotate(270deg);
+      }
+     
+    }
+
+    .content{
+      display: grid;
+      grid-template-rows: 0fr;
+      padding: 0 20px 0 20px;
+      background: #FAFAFA;
+      border-radius: 0 0 10px;
+      transition: grid-template-rows 0.3s, padding 0.3s;
+
+      @media screen and (max-width:426px) {
+        font-size: 0.8rem;
+      }
+
+      p{
+        overflow: hidden;
+      }
+    }
+
+    &.open{
+      .content {
+        grid-template-rows: 1fr;
+        padding: 20px 20px 10px 20px;
+      }
+    }
+    
+  }
+
+  @media screen and (max-width:768px) {
+    grid-template-columns: 1fr;
+  }
+}

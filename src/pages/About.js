@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Collapse from "../components/Collapse";
 
 export const handleVisibilityAndToggle = (
   section,
@@ -155,6 +156,7 @@ const About = () => {
             </p>
           </div>
         </div>
+        <Collapse descriptionTitle="respect" />
       </div>
       <Footer />
     </div>
