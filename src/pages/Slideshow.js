@@ -6,7 +6,6 @@ import axios from "axios";
 import Error from "./Error";
 import Footer from "../components/Footer";
 import Collapse from "../components/Collapse";
-import Collapse2 from "../components/Collapse2";
 
 const Slideshow = () => {
   const { id } = useParams();
@@ -69,13 +68,15 @@ const Slideshow = () => {
                 </div>
               </div>
             </div>
-            {/* <Collapse
-              descriptionTitle="Description"
-              equipmentsTitle="Equipments"
-              project={project}
-            /> */}
-            <Collapse2 title="Description" content={project.description} />
-            <Collapse2 title="Equipments" content={project.equipments} />
+            <div className="collapsesContainer">
+              <Collapse title="Description" content={project.description} />
+              <Collapse
+                title="Equipments"
+                content={project.equipments.map((equipment, index) => (
+                  <li key={index}>{equipment}</li>
+                ))}
+              />
+            </div>
           </div>
           <Footer />
         </main>

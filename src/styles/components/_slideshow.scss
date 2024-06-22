@@ -115,7 +115,17 @@
       gap: 1rem;
 
     }
-  }  
+  } 
+  
+  .collapsesContainer{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    gap: 10%;
+
+    @media screen and (max-width:768px) {
+      display: block;
+    }
+  }
 }
 
 footer{
