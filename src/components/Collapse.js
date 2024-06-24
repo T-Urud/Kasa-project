@@ -1,55 +1,44 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
-const Collapse2 = ({ title, content }) => {
-  const handleVisibilityAndToggle = (
-    section,
-    setSectionVisible,
-    setIsClicked
-  ) => {
-    // prevState --> état avant update
-    setSectionVisible((prevState) => ({
+const Collapse = ({ title, content }) => {
+  const [sectionState, setSectionState] = useState({
+    state: { visible: false, clicked: false },
+  });
+
+  const handleVisibilityAndToggle = useCallback(() => {
+    setSectionState((prevState) => ({
+      // prevState --> état avant update
       // ...prevState --> destructuring object
       ...prevState,
-      [section]: !prevState[section],
+      state: {
+        visible: !prevState.state.visible,
+        clicked: !prevState.state.clicked,
+      },
     }));
+  }, []);
 
-    setIsClicked((prevState) => ({
-      ...prevState,
-      [section]: !prevState[section],
-    }));
-  };
-
-  const [sectionVisible, setSectionVisible] = useState({
-    description: false,
-  });
-  const [isClicked, setIsClicked] = useState({
-    description: false,
-  });
+  // const { state } = sectionState;
 
   return (
     <div className="dropdownsContainer">
       <div
-        className={`${sectionVisible.description ? "open" : "close"} dropdown`}
+        className={`${sectionState.state.visible ? "open" : "close"} dropdown`}
       >
         <div className="alwaysShow">
           <p>{title}</p>
           <button
-            className={isClicked.description ? "clicked" : ""}
-            onClick={() =>
-              handleVisibilityAndToggle(
-                "description",
-                setSectionVisible,
-                setIsClicked
-              )
-            }
+            className={sectionState.state.clicked ? "clicked" : ""}
+            onClick={() => handleVisibilityAndToggle("description")}
           >
             &#10096;
           </button>
         </div>
-        <div className="content">{<p>{content}</p>}</div>
+        {sectionState.state.visible && (
+          <div className="content">{<p>{content}</p>}</div>
+        )}
       </div>
     </div>
   );
 };
 
-export default Collapse2;
+export default Collapse;
