@@ -1,41 +1,29 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 
 const Collapse = ({ title, content }) => {
-  const [sectionState, setSectionState] = useState({
-    state: { visible: false, clicked: false },
-  });
+  const [isVisible, setIsVisible] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
-  const handleVisibilityAndToggle = useCallback(() => {
-    setSectionState((prevState) => ({
-      // prevState --> état avant update
-      // ...prevState --> destructuring object
-      ...prevState,
-      state: {
-        visible: !prevState.state.visible,
-        clicked: !prevState.state.clicked,
-      },
-    }));
-  }, []);
-
-  // const { state } = sectionState;
+  const handleVisibilityAndToggle = () => {
+    setIsVisible(!isVisible);
+    setIsClicked(!isClicked);
+  };
 
   return (
     <div className="dropdownsContainer">
-      <div
-        className={`${sectionState.state.visible ? "open" : "close"} dropdown`}
-      >
+      <div className={`${isVisible ? "open" : "close"} dropdown`}>
         <div className="alwaysShow">
           <p>{title}</p>
           <button
-            className={sectionState.state.clicked ? "clicked" : ""}
+            className={isClicked ? "clicked" : ""}
             onClick={() => handleVisibilityAndToggle("description")}
           >
             &#10096;
           </button>
         </div>
-        {sectionState.state.visible && (
-          <div className="content">{<p>{content}</p>}</div>
-        )}
+        <div className="content">
+          <p>{content}</p>
+        </div>
       </div>
     </div>
   );

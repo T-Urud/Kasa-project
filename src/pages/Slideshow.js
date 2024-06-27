@@ -24,8 +24,6 @@ const Slideshow = () => {
   const rate = project ? Number(project.rating) : 0;
   // Number() convertit string en number
 
-  // const title = () => <Collapse description="tst" />;
-
   return (
     <div>
       {project ? (
