@@ -23,6 +23,7 @@
         border: none;
         font-size: 1.2rem;
         color: $color-2;
+        transition: transform 0.3s ease;
       }
       .clicked{
         transform: rotate(270deg);
@@ -36,6 +37,7 @@
       padding: 0 20px 0 20px;
       background: #FAFAFA;
       border-radius: 0 0 10px;
+      transition: grid-template-rows 0.3s, padding 0.3s;
 
       @media screen and (max-width:426px) {
         font-size: 0.8rem;
@@ -50,8 +52,6 @@
       .content {
         grid-template-rows: 1fr;
         padding: 20px 20px 10px 20px;
-        transition: grid-template-rows 0.3s, padding 0.3s;
-
       }
     }
     &.close{
