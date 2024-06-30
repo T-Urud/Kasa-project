@@ -12,17 +12,32 @@ const Slideshow = () => {
   // obtenir ID
 
   const [projectsData, setProjectsData] = useState([]);
-
-  useEffect(() => {
-    axios.get("/db.json").then((res) => setProjectsData(res.data));
-  }, []);
-  // Axios encore car besoin des données de l'API encore 1x
-
+  const [status, setStatus] = useState({ loading: true, error: null });
   const project = projectsData.find((project) => project.id === id);
   // find() permet de trouver le projet avec id qui match avec id de l'URL
 
   const rate = project ? Number(project.rating) : 0;
   // Number() convertit string en number
+
+  useEffect(() => {
+    axios
+      .get("/db.json")
+      .then((res) => {
+        setProjectsData(res.data);
+        setStatus({ loading: false, error: null });
+      })
+      .catch((err) => {
+        setStatus({ loading: false, error: err.message });
+      });
+  }, []);
+  // Axios encore car besoin des données de l'API encore 1x
+
+  if (status.loading) {
+    return <div>Loading...</div>;
+  }
+  if (status.error) {
+    return <div>{status.error}</div>;
+  }
 
   return (
     <div>
@@ -49,10 +64,7 @@ const Slideshow = () => {
                 <div className="hostContainer">
                   <p>{project.host.name}</p>
                   <div className="hostPic">
-                    <img
-                      src={project.host.picture}
-                      alt="host profile picture"
-                    />
+                    <img src={project.host.picture} alt="host profile pic" />
                   </div>
                 </div>
                 <div className="ratingContainer">

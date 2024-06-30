@@ -5,16 +5,30 @@ import { useNavigate } from "react-router-dom";
 
 const Gallery = () => {
   const navigate = useNavigate();
-
+  const [projectsData, setProjectsData] = useState([]);
+  const [status, setStatus] = useState({ loading: true, error: null });
   const handleCardClick = (id) => {
     navigate(`/project/${id}`);
   };
 
-  const [projectsData, setProjectsData] = useState([]);
-
   useEffect(() => {
-    axios.get("/db.json").then((res) => setProjectsData(res.data));
+    axios
+      .get("/db.json")
+      .then((res) => {
+        setProjectsData(res.data);
+        setStatus({ loading: false, error: null });
+      })
+      .catch((err) => {
+        setStatus({ loading: false, error: err.message });
+      });
   }, []);
+
+  if (status.loading) {
+    return <div>Loading...</div>;
+  }
+  if (status.error) {
+    return <div>{status.error}</div>;
+  }
 
   return (
     <div className="galleryContainer">
