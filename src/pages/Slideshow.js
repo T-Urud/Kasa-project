@@ -9,34 +9,25 @@ import Collapse from "../components/Collapse";
 
 const Slideshow = () => {
   const { id } = useParams();
-  // obtenir ID
-
   const [projectsData, setProjectsData] = useState([]);
-  const [status, setStatus] = useState({ loading: true, error: null });
   const project = projectsData.find((project) => project.id === id);
-  // find() permet de trouver le projet avec id qui match avec id de l'URL
+  const [error, setError] = useState(null);
 
   const rate = project ? Number(project.rating) : 0;
-  // Number() convertit string en number
 
   useEffect(() => {
     axios
       .get("/db.json")
       .then((res) => {
         setProjectsData(res.data);
-        setStatus({ loading: false, error: null });
       })
       .catch((err) => {
-        setStatus({ loading: false, error: err.message });
+        setError(err.message);
       });
   }, []);
-  // Axios encore car besoin des données de l'API encore 1x
 
-  if (status.loading) {
-    return <div>Loading...</div>;
-  }
-  if (status.error) {
-    return <div>{status.error}</div>;
+  if (error) {
+    return <div>{error}</div>;
   }
 
   return (

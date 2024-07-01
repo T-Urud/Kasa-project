@@ -16,7 +16,7 @@ const Collapse = ({ title, content }) => {
           <p>{title}</p>
           <button
             className={isClicked ? "clicked" : ""}
-            onClick={() => handleVisibilityAndToggle("description")}
+            onClick={handleVisibilityAndToggle}
           >
             &#10096;
           </button>

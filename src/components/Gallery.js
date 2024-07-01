@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 const Gallery = () => {
   const navigate = useNavigate();
   const [projectsData, setProjectsData] = useState([]);
-  const [status, setStatus] = useState({ loading: true, error: null });
+  const [error, setError] = useState(null);
+
   const handleCardClick = (id) => {
     navigate(`/project/${id}`);
   };
@@ -16,18 +17,14 @@ const Gallery = () => {
       .get("/db.json")
       .then((res) => {
         setProjectsData(res.data);
-        setStatus({ loading: false, error: null });
       })
       .catch((err) => {
-        setStatus({ loading: false, error: err.message });
+        setError(err.message);
       });
   }, []);
 
-  if (status.loading) {
-    return <div>Loading...</div>;
-  }
-  if (status.error) {
-    return <div>{status.error}</div>;
+  if (error) {
+    return <div>{error}</div>;
   }
 
   return (
