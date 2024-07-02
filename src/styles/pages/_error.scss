@@ -30,4 +30,8 @@
     color: $color-3;
     font-weight: 500;
   }
+
+  @media screen and (max-width: 426px){
+    margin: 50px 0;
+  }
 }
